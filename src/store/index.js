@@ -1,8 +1,6 @@
-import { createStore } from "vuex";
+import { createStore } from 'vuex'
+import login from './login/login-global-info'
 
 export default createStore({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {},
-});
+	modules: { login },
+})

@@ -10,9 +10,14 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "email-regex": "^5.0.0",
+    "hsla-regex": "^1.0.0",
+    "password-regexp": "^1.0.4",
     "register-service-worker": "^1.7.1",
+    "v-wave": "^1.2.8",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
+    "vue-screen": "^2.0.3-alpha.3",
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {

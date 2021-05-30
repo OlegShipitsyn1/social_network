@@ -1,0 +1,84 @@
+@import 'variables';
+@import 'reset';
+
+.clearfix::after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+body {
+	color: $mainFontColor;
+	font-family: Avenir, Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+p,
+span,
+a,
+button,
+input,
+::-webkit-input-placeholder {
+	@include fluid-type(15px, 18px);
+}
+
+p {
+	line-height: 1.2;
+	letter-spacing: 0.04em;
+	overflow-wrap: break-word;
+}
+
+h1 {
+	@include fluid-type(25px, 50px);
+}
+
+h2 {
+	@include fluid-type(21px, 30px);
+}
+
+h3 {
+	@include fluid-type(17px, 25px);
+}
+
+h4 {
+	@include fluid-type(15px, 20px);
+}
+
+.container {
+	@include push-auto;
+	width: 100%;
+	height: 100%;
+	padding: 0 5px;
+
+	@include phone {
+		@include max-size($phone);
+		padding: 0 10px;
+	}
+	@include tablet {
+		@include max-size($tablet);
+		padding: 0 15px;
+	}
+	@include laptop {
+		@include max-size($laptop);
+		padding: 0 20px;
+	}
+	@include desktop {
+		@include max-size($desktop);
+		padding: 0 30px;
+	}
+}
+
+.container--mobile-specific {
+	padding: 0;
+	width: 100%;
+
+	@include laptop {
+		@include max-size($laptop);
+		padding: 0 20px;
+	}
+	@include desktop {
+		@include max-size($desktop);
+		padding: 0 30px;
+	}
+}
