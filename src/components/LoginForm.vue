@@ -1,16 +1,8 @@
 <script>
 import BaseButton from './BaseButton.vue'
-import createPasswordRegex from 'password-regexp'
 import useFieldsValidation from '@/use/fieldsValidation'
 import { defineComponent } from 'vue'
-
-const passwordRegex = createPasswordRegex({
-	min: 6,
-	max: 18,
-	numeric: false,
-	uppercase: false,
-	symbols: false,
-})
+import regexp from '@/util/regexp'
 
 export default defineComponent({
 	components: { BaseButton },
@@ -21,7 +13,7 @@ export default defineComponent({
 				name: 'login',
 				text: 'Логин:',
 				placeholder: 'example@mail.net',
-				regexp: passwordRegex,
+				regexp: regexp.loginValidation,
 				value: '',
 				type: 'text',
 			},
@@ -29,7 +21,7 @@ export default defineComponent({
 				name: 'password',
 				text: 'Пароль:',
 				placeholder: 'Введите пароль',
-				regexp: passwordRegex,
+				regexp: regexp.passwordValidation,
 				value: '',
 				type: 'password',
 			},
