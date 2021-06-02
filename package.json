@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "email-regex": "^5.0.0",
     "hsla-regex": "^1.0.0",
     "password-regexp": "^1.0.4",
     "register-service-worker": "^1.7.1",

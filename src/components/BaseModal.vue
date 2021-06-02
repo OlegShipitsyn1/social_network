@@ -50,7 +50,7 @@ export default defineComponent({
 			@touchstart.passive="setModalVisibility(false)"
 			@mousedown.left="setModalVisibility(false)"
 		>
-			<dialog :open="isOpened" class="modal__content" @mousedown.stop @touchstart.stop.passive>
+			<dialog :style="{ maxWidth }" :open="isOpened" class="modal__content" @mousedown.stop @touchstart.stop.passive>
 				<div class="modal__headline">
 					<h2 class="modal__title" v-text="title"></h2>
 					<div class="modal__options">
@@ -93,7 +93,6 @@ export default defineComponent({
 }
 
 .modal__content {
-	max-width: v-bind(maxWidth);
 	transition: 0.28s;
 	padding: 20px;
 	border-radius: 4px;

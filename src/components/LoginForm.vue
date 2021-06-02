@@ -8,7 +8,7 @@ export default defineComponent({
 	components: { BaseButton },
 	name: 'LoginForm',
 	setup() {
-		const form = useFieldsValidation([
+		const { form, isEveryFieldValid } = useFieldsValidation([
 			{
 				name: 'login',
 				text: 'Логин:',
@@ -27,7 +27,11 @@ export default defineComponent({
 			},
 		])
 
-		return { form }
+		const cleanForm = () => {
+			form.value.forEach((field) => (field.value = ''))
+		}
+
+		return { form, isEveryFieldValid, cleanForm }
 	},
 })
 </script>
@@ -38,11 +42,11 @@ export default defineComponent({
 			<label v-for="field in form" :key="field.name"
 				>{{ field.text }}
 				<span class="input-wrapper">
-					<input :id="field.name" v-model="field.value" :placeholder="field.placeholder" :type="field.type" />
+					<input v-model="field.value" :placeholder="field.placeholder" :type="field.type" />
 					<span :style="{ color: field.color }" class="input-shadow"></span>
 				</span>
 			</label>
-			<base-button fontSize="20px" @click.prevent>Войти</base-button>
+			<base-button :disabled="!isEveryFieldValid" fontSize="20px">Войти</base-button>
 		</fieldset>
 	</form>
 </template>
@@ -73,6 +77,7 @@ export default defineComponent({
 			position: relative;
 			border-radius: 4px;
 			margin-top: 2px;
+			box-shadow: 9px 9px 27px #0000002e;
 		}
 
 		.input-shadow {

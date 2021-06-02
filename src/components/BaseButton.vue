@@ -61,5 +61,18 @@ export default defineComponent({
 		box-shadow: none;
 		background-color: v-bind(backgroundColorLighten);
 	}
+
+	&:disabled {
+		background-color: var(--app-background);
+		color: rgb(104, 104, 104);
+		cursor: not-allowed;
+		div {
+			display: none;
+		}
+		&:hover {
+			box-shadow: v-bind(boxShadow);
+			background-color: var(--app-background);
+		}
+	}
 }
 </style>

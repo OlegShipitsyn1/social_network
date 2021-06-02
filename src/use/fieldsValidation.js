@@ -10,12 +10,12 @@ const useFieldsValidation = (fieldsInitial) => {
 	const statusColor = {
 		neutral: 'rgba(0, 0, 0, 0.137)',
 		success: '#46d688',
-		danger: '#d60808e8',
+		danger: '#de3e3eb5',
 	}
 
 	const fields = reactive(fieldsInitial)
 
-	const validated = computed(() =>
+	const form = computed(() =>
 		fields.map((field) => {
 			field.isValid = field.regexp.test(field.value)
 			if (!field.value.length) {
@@ -27,7 +27,9 @@ const useFieldsValidation = (fieldsInitial) => {
 		})
 	)
 
-	return validated
+	const isEveryFieldValid = computed(() => form.value.every((f) => f.isValid === true))
+
+	return { form, isEveryFieldValid }
 }
 
 export default useFieldsValidation

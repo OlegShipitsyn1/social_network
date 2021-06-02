@@ -2,8 +2,14 @@
 	<nav class="top-navigation">
 		<div class="top-navigation__outer">
 			<div class="container container--mobile-specific">
-				<div class="top-navigation__inner">
-					<div v-if="!$grid.laptop" class="top-navigation__left-mobile">
+				<div
+					class="top-navigation__inner"
+					:style="{
+						paddingLeft: !$grid.laptop ? '0' : '10px',
+						paddingRight: $grid.laptop ? '0' : '10px',
+					}"
+				>
+					<div v-if="!$grid.laptop && login.isLoggedIn" class="top-navigation__left-mobile">
 						<hamburger-button />
 						<base-logotype />
 					</div>
@@ -43,9 +49,12 @@ export default {
 
 <style lang="scss">
 .top-navigation {
-	--top-navigation-height: 48px;
+	--top-navigation-height: 54px;
 	--top-navigation-color: var(--accent);
 	height: var(--top-navigation-height);
+	position: relative;
+	z-index: 100;
+	box-shadow: 0 5px 10px #2a57848a;
 }
 
 .top-navigation__outer {
@@ -67,14 +76,14 @@ export default {
 .top-navigation__left-mobile {
 	display: flex;
 	align-items: center;
-	gap: 10px;
 }
 
 .top-navigation__right {
 	color: white;
-	padding-right: 10px;
-	@include laptop {
-		padding-right: 0;
-	}
+}
+
+.top-navigation__left-desktop,
+.top-navigation__left-mobile {
+	height: 100%;
 }
 </style>
